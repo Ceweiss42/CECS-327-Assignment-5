@@ -10,13 +10,13 @@ class Client:
     def clientToServer(self):                                    # function to send message from client to server
         s = socket.socket()                                      # create a socket
         s.connect((self.ip, self.port))                          # connect socket using ip address and port number
-        s.sendall(self.message)                                  # send message to the Server
+        s.sendall(bytes(self.message))                                  # send message to the Server
 
-        m = s.recv(1024)                                         # recieve a message from the Server
+        m = s.recv(64)                                         # recieve a message from the Server
 
         while m:                                                 # infinite loop to get all messages from the Server
             print('Message received from Server:' + m)
-            m = s.recv(1024)
+            m = s.recv(64)
         s.close()
 
 
