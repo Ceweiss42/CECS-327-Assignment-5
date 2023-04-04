@@ -21,6 +21,6 @@ class Client:
 
 
 if __name__ == "__main__":
-    client = Client(input("please enter an ip: "), int(input("please enter a port: "), input("please enter a message: ")))
+    client = Client(input("please enter an ip: "), int(input("please enter a port: ")), input("please enter a message: "))
     client.clientToServer()
     
