@@ -2,7 +2,7 @@ import socket
 
 class Client:
 
-    def __init__(self, ip: int, port: int, message: str):        # constructor for Client class
+    def __init__(self, ip: str, port: int, message: str):        # constructor for Client class
         self.ip = ip
         self.port = port
         self.message = message
@@ -10,7 +10,7 @@ class Client:
     def clientToServer(self):                                    # function to send message from client to server
         s = socket.socket()                                      # create a socket
         s.connect((self.ip, self.port))                          # connect socket using ip address and port number
-        s.sendall(bytes(self.message))                                  # send message to the Server
+        s.sendall(self.message)                                  # send message to the Server
 
         m = s.recv(64)                                         # recieve a message from the Server
 
