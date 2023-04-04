@@ -60,7 +60,6 @@ def start():
         server.run()
 
     except Exception as e:
-        print(e)
         print("Could not use suggested port. Please ensure port is a valid port number and is available")
         start()
 
