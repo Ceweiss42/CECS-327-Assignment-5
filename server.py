@@ -42,7 +42,7 @@ class Server:
     #send message method
     #send a connected client a message back
     def sendMessage(self, message : str):
-        self.client.sendall(bytes(message))
+        self.client.sendall(message)
 
     #change message method
     #given an input message (string), output the message in all capitals
