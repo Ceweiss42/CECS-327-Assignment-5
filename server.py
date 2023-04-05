@@ -26,23 +26,23 @@ class Server:
         self.clientAddr = None
 
     def run(self):
-        print("Server Awaiting Connection...")
-        self.server.listen()
-        self.client, self.clientAddr = self.server.accept()
-        with self.client:
-            print(f"Connected by {self.clientAddr}")
-            while True:
-                data = self.client.recv(64)
-                if not data:
-                    break
-                self.sendMessage(self.changeMessage(data))
-        
+        while input("Close the server? (Y/N)") != "Y":
+            print("Server Awaiting Connection...")
+            self.server.listen()
+            self.client, self.clientAddr = self.server.accept()
+            with self.client:
+                print(f"Connected by {self.clientAddr}")
+                while True:
+                    data = self.client.recv(64).decode('utf-8')
+                    if not data:
+                        break
+                    self.sendMessage(self.changeMessage(data))
 
 
     #send message method
     #send a connected client a message back
     def sendMessage(self, message : str):
-        self.client.sendall(message)
+        self.client.sendall(bytes(message, 'utf-8'))
 
     #change message method
     #given an input message (string), output the message in all capitals
@@ -56,6 +56,7 @@ def start():
     try:
         suggestedPort = int(input("Please enter a port to use:"))
         myIP = socket.gethostbyname(socket.gethostname())
+        print("Starting server on", myIP)
         server = Server(myIP, suggestedPort)
         server.run()
 
