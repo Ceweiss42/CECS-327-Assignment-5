@@ -35,14 +35,21 @@ if __name__ == "__main__":
     # infinite loop, until a valid IP address is entered
     while True:                                                               
         try:
-            ip = input("please enter an ip: ")
+            ip = input("please enter an IP address: ")
             # checks if IP address is valid
             checkIP = ipaddress.ip_address(ip)                                
             break
         except ValueError:
-            print("Error: Not an IP address, please enter a valid IP address")
-    port = int(input("please enter a port: "))
+            print("Error: NOT an IP address, please enter a valid IP address")
+    # infinite loop, until a valid port number is entered
+    while True:
+        try:
+            port = int(input("please enter a port number: "))
+            if 1 > port or port > 65535:
+                raise ValueError
+            break
+        except ValueError:
+            print("Error: NOT a VALID port number, please enter a valid port number")
     message = input("please enter a message: ")
     client = Client(ip, port, message)
-    #client = Client(input("please enter an ip: "), int(input("please enter a port: ")), input("please enter a message: "))
     client.clientToServer()
