@@ -48,12 +48,11 @@ class Server:
                     self.sendMessage(self.changeMessage(data))
 
 
-    #send message method
     #send a connected client a message back
     def sendMessage(self, message : str):
         self.client.sendall(bytes(message, 'utf-8'))
 
-    #change message method
+
     #given an input message (string), output the message in all capitals
     def changeMessage(self, message : str):
         return message.upper()
@@ -83,6 +82,7 @@ def start():
 #main function
 if __name__ == "__main__":
     start()
+    print("Good bye!")
 
 
     
