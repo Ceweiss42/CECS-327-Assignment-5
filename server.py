@@ -27,7 +27,7 @@ class Server:
     #loops until told to stop
     def run(self):
         #main loop
-        while input("Close the server? (Y/N)") != "Y":
+        while True:
             print("Server Awaiting Connection...")
 
             #await connection
